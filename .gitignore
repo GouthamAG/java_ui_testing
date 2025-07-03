@@ -1,0 +1,21 @@
+# Maven target directory
+/target/
+/bin/
+
+# IDE files
+*.iml
+*.ipr
+*.iws
+.idea/
+.settings
+.classpath
+.project
+
+# Logs
+*.log
+
+# Mac system files
+.DS_Store
+
+# Test output
+/logging.txt
