@@ -18,6 +18,11 @@ public class Locators {
 		driver.findElement(By.name("inputPassword")).sendKeys("randomPassword");
 		driver.findElement(By.className("signInBtn")).click();
 		System.out.println(driver.findElement(By.cssSelector("p.error")).getText());
+		driver.findElement(By.linkText("Forgot your password?")).click();
+		driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("Goutham");
+		driver.findElement(By.cssSelector("input[placeholder='Email']")).sendKeys("goutham@gmail.com");
+		driver.findElement(By.cssSelector("input[placeholder='Email']")).clear();
+		driver.findElement(By.xpath("//input[@type='text'][2]")).sendKeys("john@gmail.com");
 		
 	}
 
