@@ -15,10 +15,13 @@ public class Locators2 {
 
 //		Login with proper credentials and verify the messages and headings after sign in
 		String name = "Goutham";
+		
+		String tempPassword = getPassword(driver);
+		
 		driver.get("https://rahulshettyacademy.com/locatorspractice/");
 		driver.findElement(By.id("inputUsername")).sendKeys(name);
-		driver.findElement(By.name("inputPassword")).sendKeys("rahulshettyacademy");
-		driver.findElement(By.className("signInBtn")).click();
+		driver.findElement(By.name("inputPassword")).sendKeys(tempPassword);
+		driver.findElement(By.className("signInBtn")).click(); 
 		
 		Thread.sleep(Duration.ofSeconds(1));
 		
@@ -30,6 +33,17 @@ public class Locators2 {
 		Assert.assertEquals(driver.findElement(By.xpath("//form[@class='form']/h1")).getText(), "Sign in");
 		driver.close();
 		
+	}
+	
+	
+	public static String getPassword(WebDriver driver) throws InterruptedException {
+		driver.get("https://rahulshettyacademy.com/locatorspractice/");
+		driver.findElement(By.linkText("Forgot your password?")).click();
+		Thread.sleep(Duration.ofSeconds(1));
+		driver.findElement(By.cssSelector("button.reset-pwd-btn")).click();
+		String passwordText = driver.findElement(By.cssSelector("form p")).getText();
+		String[] passwordArray = passwordText.split("'");
+		return passwordArray[1].split("'")[0]; 
 	}
 
 }
